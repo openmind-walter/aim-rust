@@ -22,9 +22,22 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-title" content="AIM">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="preload" as="script" href="/./assets/aim-dxh9b90a035ce989b94.js" crossorigin></head>
+
+        <!-- Register the root-scoped service worker. Required for a real PWA install
+             on Samsung Internet / some Android browsers (without it, "Add to Home
+             Screen" only makes a bookmark shortcut), and it caches the app shell so
+             the installed app launches reliably/offline. /sw.js is placed at the
+             bundle root by the deploy. -->
+        <script>
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", function () {
+                    navigator.serviceWorker.register("/sw.js").catch(function () {});
+                });
+            }
+        </script>
+    <link rel="preload" as="script" href="/./assets/aim-dxh9e322fa69eb3ffe2.js" crossorigin></head>
     <body>
         <div id="main"></div>
-    <script type="module" async src="/./assets/aim-dxh9b90a035ce989b94.js"></script>
+    <script type="module" async src="/./assets/aim-dxh9e322fa69eb3ffe2.js"></script>
             </body>
 </html>
