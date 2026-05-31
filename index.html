@@ -11,6 +11,13 @@
              The file is forced into the bundle (unhashed) by `static FAVICON` in main.rs. -->
         <link rel="icon" type="image/png" href="/assets/favicon.png">
 
+        <!-- App stylesheet, linked statically so the browser fetches and applies it
+             before the WASM boots and renders. If injected at runtime instead, the DOM
+             paints unstyled for a moment (FOUC). Bundled at this stable path via
+             `static MAIN_CSS` (with_hash_suffix false) in main.rs; the service worker
+             serves it network-first since it is mutable / not content-hashed (sw.js). -->
+        <link rel="stylesheet" href="/assets/main.css">
+
         <!-- PWA / "Add to Home Screen". These MUST be in the served HTML: iOS reads the
              home-screen icon and standalone meta from the initial markup (not from
              JS-injected tags), so a runtime-only setup installs but won't launch right.
@@ -35,9 +42,9 @@
                 });
             }
         </script>
-    <link rel="preload" as="script" href="/./assets/aim-dxh988083e2a26f4eed.js" crossorigin></head>
+    <link rel="preload" as="script" href="/./assets/aim-dxh54521bcd1af668a5.js" crossorigin></head>
     <body>
         <div id="main"></div>
-    <script type="module" async src="/./assets/aim-dxh988083e2a26f4eed.js"></script>
+    <script type="module" async src="/./assets/aim-dxh54521bcd1af668a5.js"></script>
             </body>
 </html>
