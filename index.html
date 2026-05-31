@@ -10,9 +10,21 @@
              Served from the domain root, so the absolute /assets path is correct.
              The file is forced into the bundle (unhashed) by `static FAVICON` in main.rs. -->
         <link rel="icon" type="image/png" href="/assets/favicon.png">
-    <link rel="preload" as="script" href="/./assets/aim-dxh85f86284c7b3f69.js" crossorigin></head>
+
+        <!-- PWA / "Add to Home Screen". These MUST be in the served HTML: iOS reads the
+             home-screen icon and standalone meta from the initial markup (not from
+             JS-injected tags), so a runtime-only setup installs but won't launch right.
+             The referenced files are bundled at these stable paths via `#[used] static`
+             asset declarations (with_hash_suffix(false)) in main.rs. -->
+        <link rel="manifest" href="/assets/manifest.json">
+        <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="AIM">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="preload" as="script" href="/./assets/aim-dxh188bef69f8c8cb9.js" crossorigin></head>
     <body>
         <div id="main"></div>
-    <script type="module" async src="/./assets/aim-dxh85f86284c7b3f69.js"></script>
+    <script type="module" async src="/./assets/aim-dxh188bef69f8c8cb9.js"></script>
             </body>
 </html>
